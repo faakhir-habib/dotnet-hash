@@ -5,9 +5,10 @@
 
 trigger:
 - master
+- pipeline
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 
 variables:
   buildConfiguration: 'Release'
@@ -20,3 +21,10 @@ steps:
   inputs:
     command: pack
     packagesToPack: './src/TheBlueSky.DotNet.Tools.SwiftHash.csproj'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: 'push'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet connection for dotnet-hash'
+    allowPackageConflicts: true
