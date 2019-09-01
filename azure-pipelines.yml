@@ -29,7 +29,7 @@ steps:
 - task: NuGetAuthenticate@0
   displayName: 'Authenticate nuget.exe'
   inputs:
-    nuGetServiceConnections: 'NuGet connection for dotnet-hash'
+    nuGetServiceConnections: 'NuGet.org (dotnet-hash)'
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet'
 - script: nuget push TheBlueSky.DotNet.Tools.SwiftHash.*.nupkg -ApiKey $(nuget.apikey) -SkipDuplicate
