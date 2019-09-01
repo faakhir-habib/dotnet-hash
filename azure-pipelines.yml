@@ -14,7 +14,7 @@ variables:
   buildConfiguration: 'Release'
   nugetSource: 'https://api.nuget.org/v3/index.json'
   projectName: 'TheBlueSky.DotNet.Tools.SwiftHash'
-  projectFile: './src/TheBlueSky.DotNet.Tools.SwiftHash.csproj'
+  projectFile: './src/$(projectName).csproj'
 
 steps:
 - task: DotNetCoreCLI@2
