@@ -26,10 +26,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: '$(projectFile)'
-- task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: NuGet.org
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet'
-- script: nuget push ..\TheBlueSky.DotNet.Tools.SwiftHash.*.nupkg -SkipDuplicate
+- script: nuget push -ApiKey $(nuget.apikey) -SkipDuplicate
   displayName: 'Push to NuGet.org'
