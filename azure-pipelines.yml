@@ -12,19 +12,25 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  projectFile: './src/TheBlueSky.DotNet.Tools.SwiftHash.csproj'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- task: DotNetCoreCLI@2
   displayName: 'dotnet build $(buildConfiguration)'
+  inputs:
+    command: build
+    projects: '$(projectFile)'
+    arguments: '--configuration $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: pack
-    packagesToPack: './src/TheBlueSky.DotNet.Tools.SwiftHash.csproj'
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
+    packagesToPack: '$(projectFile)'
+- task: NuGetAuthenticate@0
+  displayName: 'Authenticate nuget.exe'
   inputs:
-    command: 'push'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'NuGet connection for dotnet-hash'
-    allowPackageConflicts: true
+    nuGetServiceConnections: 'NuGet connection for dotnet-hash'
+- task: NuGetToolInstaller@1
+  displayName: 'Install NuGet'
+- script: nuget push TheBlueSky.DotNet.Tools.SwiftHash.*.nupkg -SkipDuplicate
+  displayName: 'Push to NuGet.org'
