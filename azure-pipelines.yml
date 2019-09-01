@@ -28,5 +28,7 @@ steps:
     packagesToPack: '$(projectFile)'
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet'
-- script: nuget push *.nupkg -ApiKey $(nuget.apikey) -SkipDuplicate
+- script: dir
+- script: dir ..
+- script: nuget push *.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(nuget.apikey) -SkipDuplicate
   displayName: 'Push to NuGet.org'
