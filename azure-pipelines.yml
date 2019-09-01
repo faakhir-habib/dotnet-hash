@@ -32,5 +32,5 @@ steps:
     nuGetServiceConnections: 'NuGet connection for dotnet-hash'
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet'
-- script: nuget push TheBlueSky.DotNet.Tools.SwiftHash.*.nupkg -SkipDuplicate
+- script: nuget push TheBlueSky.DotNet.Tools.SwiftHash.*.nupkg -ApiKey $(nuget.apikey) -SkipDuplicate
   displayName: 'Push to NuGet.org'
