@@ -33,5 +33,5 @@ steps:
 - script: echo $(Build.ArtifactStagingDirectory)
 - script: dir $(Build.ArtifactStagingDirectory)
 - script: nuget help
-- script: nuget push ..\a\TheBlueSky.DotNet.Tools.SwiftHash.*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(nuget.apikey) -SkipDuplicate
+- script: nuget push $(Build.ArtifactStagingDirectory)\TheBlueSky.DotNet.Tools.SwiftHash.1.0.1.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(nuget.apikey) -SkipDuplicate
   displayName: 'Push to NuGet.org'
