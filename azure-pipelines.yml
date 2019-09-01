@@ -12,6 +12,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  nugetSource: 'https://api.nuget.org/v3/index.json'
+  projectName: 'TheBlueSky.DotNet.Tools.SwiftHash'
   projectFile: './src/TheBlueSky.DotNet.Tools.SwiftHash.csproj'
 
 steps:
@@ -28,10 +30,5 @@ steps:
     packagesToPack: '$(projectFile)'
 - task: NuGetToolInstaller@1
   displayName: 'Install NuGet'
-- script: dir
-- script: dir ..
-- script: echo $(Build.ArtifactStagingDirectory)
-- script: dir $(Build.ArtifactStagingDirectory)
-- script: nuget help
-- script: nuget push $(Build.ArtifactStagingDirectory)\TheBlueSky.DotNet.Tools.SwiftHash.1.0.1.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey $(nuget.apikey) -SkipDuplicate
+- script: nuget push $(Build.ArtifactStagingDirectory)\$(projectName).*.nupkg -Source $(nugetSource) -ApiKey $(nuget.apikey) -SkipDuplicate
   displayName: 'Push to NuGet.org'
