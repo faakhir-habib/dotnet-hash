@@ -26,7 +26,7 @@
     <PackageVersion>$(AssemblyVersion)</PackageVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/TheBlueSky/dotnet-hash</PackageProjectUrl>
-    <PackageLicenseUrl>$(PackageProjectUrl)/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/TheBlueSky/dotnet-hash.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>MD5;SHA-1;SHA-256;SHA-384;SHA-512</PackageTags>
